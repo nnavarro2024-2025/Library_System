@@ -1,0 +1,59 @@
+CREATE DATABASE library;
+USE library;
+
+CREATE TABLE book (
+    bookID VARCHAR(50) PRIMARY KEY,
+    name VARCHAR(100),
+    publisher VARCHAR(100),
+    price VARCHAR(20),
+    publisherYear VARCHAR(10)
+);
+
+CREATE TABLE student (
+    studentID VARCHAR(50) PRIMARY KEY,
+    firstName VARCHAR(100),
+    middleName VARCHAR(100),
+    lastName VARCHAR(100),
+    courseName VARCHAR(50),
+    branchName VARCHAR(50)
+);
+
+CREATE TABLE issuebook (
+    bookID VARCHAR(50),
+    studentID VARCHAR(50),
+    issueDate VARCHAR(20),
+    dueDate VARCHAR(20),
+    returnBook VARCHAR(5) DEFAULT 'NO',
+    PRIMARY KEY (bookID, studentID)
+);
+
+
+
+// Dummy Data
+
+USE library;
+
+INSERT INTO student (studentID, firstName, middleName, lastName, courseName, branchName) VALUES
+('230000002875', 'Nikko Angelo', 'Plaza', 'Navarro', 'BSCS', 'BAJADA'),
+('230000002778', 'Paula', '', 'Honrada', 'BSIT', 'BANKEROHAN'), 
+('230000007898', 'Rhy', '', 'Gamao', 'BSIS', 'BONIFACIO'),
+('230000001234', 'Ken', '', 'Baltazar', 'BSCS', 'BAJADA'),
+('230000005678', 'Paul Adrian', '', 'Baltazar', 'BSCS', 'BAJADA');
+
+
+INSERT INTO book (bookID, name, publisher, price, publisherYear) VALUES
+('B001', 'Mathematics for Beginners', 'Math Publishers', '450', '2023'),
+('B002', 'Advanced Calculus', 'Academic Press', '650', '2022'),
+('B003', 'Programming in Java', 'Tech Books', '550', '2024'),
+('B004', 'Database Systems', 'Data World', '600', '2023'),
+('B005', 'Web Development', 'Web Press', '500', '2024'),
+('B006', 'Physics Fundamentals', 'Science House', '480', '2022');
+
+
+INSERT INTO issuebook (bookID, studentID, issueDate, dueDate, returnBook) VALUES
+('B001', '230000002875', '2024-01-15', '2024-01-29', 'NO'),
+('B003', '230000002778', '2024-01-10', '2024-01-24', 'YES'),
+('B002', '230000007898', '2024-01-12', '2024-01-26', 'NO'),
+('B004', '230000001234', '2024-01-08', '2024-01-22', 'YES'),
+('B005', '230000002875', '2024-01-18', '2024-02-01', 'NO'),
+('B006', '230000002778', '2024-01-05', '2024-01-19', 'YES');
